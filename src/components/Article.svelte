@@ -1,5 +1,6 @@
 <script>
   export let article;
+  import { convertTime } from "../util/timezone.js";
 </script>
 
 <style>
@@ -27,6 +28,7 @@
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src={article.urlToImage} alt="Card image cap" />
     <div class="card-body">
+      Published: {convertTime(article.publishedAt)}
       <h5 class="card-title">{article.title}</h5>
       <a href={article.url} target="_blank" class="btn btn-primary">
         Go to article
