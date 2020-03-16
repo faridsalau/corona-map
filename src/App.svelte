@@ -6,6 +6,9 @@
   let cases = [];
   let lastChecked = "";
   let loading = true;
+  let totalAmountOfCases = 0;
+  let stateWithMostCases = "";
+  let highestAmountOfCases = 0;
   onMount(async () => {
     const res = await fetch(
       "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=USA",
@@ -22,6 +25,13 @@
     lastChecked = json.data.lastChecked;
     if (cases.length !== 0) {
       loading = false;
+      cases.forEach(covidCase => {
+        totalAmountOfCases += covidCase.confirmed;
+        if (covidCase.confirmed > highestAmountOfCases) {
+          highestAmountOfCases = covidCase.confirmed;
+          stateWithMostCases = covidCase.province;
+        }
+      });
     }
     if (lastChecked !== "") {
       lastChecked =
@@ -51,6 +61,11 @@
     font-weight: 100;
   }
 
+  div {
+    border: black 1px solid;
+    margin: 5px;
+  }
+
   @media (min-width: 2px) {
     main {
       max-width: none;
@@ -77,6 +92,20 @@
       is updated on different days, so some states may not be up to date.
       <b>For the most part, this is recent data!</b>
     </p>
+    <div>
+      <p>
+        There are currently
+        <b>{totalAmountOfCases}</b>
+        total cases in the USA
+      </p>
+    </div>
+    <div>
+      <p>
+        {stateWithMostCases} has the most cases with
+        <b>{highestAmountOfCases}</b>
+        total cases recorded.
+      </p>
+    </div>
     <Map {cases} />
   {:else}
     <p>Loading...</p>
