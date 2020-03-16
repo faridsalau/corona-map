@@ -4,7 +4,7 @@
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 2);
   const finalDate = yesterday.toISOString();
-  const url = `http://newsapi.org/v2/everything?q=covid-19&from=${finalDate}&apiKey=623b1adc559146dfae630fa2c426d95e`;
+  const url = `https://newsapi.org/v2/everything?q=covid-19&from=${finalDate}&apiKey=623b1adc559146dfae630fa2c426d95e`;
   let articles = [];
   onMount(async () => {
     const res = await fetch(url);
