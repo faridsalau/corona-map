@@ -10,7 +10,6 @@
     const res = await fetch(url);
     const json = await res.json();
     articles = json.articles.slice(0, 10);
-    console.log(articles);
   });
 </script>
 
