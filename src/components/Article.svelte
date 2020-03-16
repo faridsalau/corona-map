@@ -13,6 +13,10 @@
     background-color: #ff3e00;
     border-color: #ff3e00;
   }
+  .btn-primary:hover {
+    background-color: #f56332;
+    border-color: #f56332;
+  }
   .card {
     min-height: 50vh;
     max-height: 50vh;
