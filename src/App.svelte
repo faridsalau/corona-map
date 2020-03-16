@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { convertTime } from "./util/timezone.js";
   import Map from "./components/Map.svelte";
+  import Articles from "./components/Articles.svelte";
   export let ready;
   let cases = [];
   let lastChecked = "";
@@ -106,6 +107,7 @@
         total cases recorded.
       </p>
     </div>
+    <Articles />
     <Map {cases} />
   {:else}
     <p>Loading...</p>
