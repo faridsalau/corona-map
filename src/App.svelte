@@ -63,7 +63,7 @@
 
   div {
     border: black 1px solid;
-    margin: 5px;
+    margin: 5px 0;
   }
 
   @media (min-width: 2px) {
